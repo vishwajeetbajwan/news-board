@@ -5,14 +5,13 @@ import axios from 'axios';
 import { Container, Row, Col, ListGroup } from 'react-bootstrap';
 import Channels from './components/channels';
 import PageNo from './components/PageNo';
-import store from './store';
 import { Provider, useSelector, useDispatch } from 'react-redux';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { fetchChannelsSuccess } from './actions/action';
+import store from './store';
 
 const App = () => {
-  const news = useSelector((state) => state.news);
-  const dispatch = useDispatch();
+  const channel = useSelector((state) => state.channelReducer);
+  const dispatch = useDispatch(fetchChannelsSuccess());
   /*
   const [channel, setChannel] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -49,11 +48,11 @@ const App = () => {
         <Row>
           <Col sm={4}>
             <h2>Channels</h2>
-            {/*<Channels channel={channel} />*/}
+            <Channels channel={channel} />
             <button onClick={() => dispatch({ type: 'GET_CHANNELS' })}>
               CHANNEL
             </button>
-            <h4>state: {news}</h4>
+            <h4>state: {channel}</h4>
             {/*
             <PageNo
               activePage={activePage}

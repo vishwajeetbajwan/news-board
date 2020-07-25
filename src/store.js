@@ -1,11 +1,13 @@
-import { createStore } from 'redux';
-import news from './reducers/rootReducers';
+import { applyMiddleware, createStore } from 'redux';
+import thunk from 'redux-thunk';
 
-const initialState = {};
+import channelReducer from './reducers/reducer';
+//import initialState from './initialState';
+
+const middlewares = [thunk];
 
 const store = createStore(
-  news,
-  initialState,
+  channelReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
