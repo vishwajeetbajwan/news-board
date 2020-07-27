@@ -5,17 +5,15 @@ console.log('.....in reducer');
 const initialState = {
   channel: [],
   loading: true,
-  error: null,
 };
 
-export default function channelReducer(state = initialState, action) {
-  console.log(action);
+const reducer = (state = initialState, action) => {
+  console.log('IN reducer', action.payload);
   switch (action.type) {
     case GET_CHANNELS:
-      console.log('.........', action.payload);
       return {
         ...state,
-        channel: action.payload,
+        channel: action.channel,
         loading: false,
       };
 
@@ -29,8 +27,6 @@ export default function channelReducer(state = initialState, action) {
     default:
       return state;
   }
-}
-/*
-export const getChannels = (state) => state.channel;
-export const getChannelsError = (state) => state.error;
-*/
+};
+
+export default reducer;

@@ -1,14 +1,21 @@
-import { applyMiddleware, createStore } from 'redux';
+import reducer from './reducers/reducer';
+import { createStore, applyMiddleware, compose } from 'redux';
+//import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
-import channelReducer from './reducers/reducer';
-//import initialState from './initialState';
+const middleware = [thunk];
 
-const middlewares = [thunk];
-
+const store = createStore(
+  reducer,
+  compose(
+    applyMiddleware(...middleware),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  )
+);
+/*
 const store = createStore(
   channelReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+);*/
 
 export default store;
