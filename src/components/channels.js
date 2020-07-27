@@ -1,34 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container, ListGroup } from 'react-bootstrap';
 //import { Provider, useSelector, useDispatch } from 'react-redux';
 import { connect } from 'react-redux';
-import * as actionCreator from '../actions/action';
+import { getChannel } from '../actions/action';
 
-const channels = (props) => {
-  /*
+const Channels = (props) => {
+  useEffect(() => {
+    props.onGetChannel();
+  }, []);
+
   if (props.loading) {
     return <h2>Loading....</h2>;
-  }*/
-  if (props.loading) {
-    return (
-      <Container>
-        <ListGroup>
-          <button
-            onClick={() => {
-              props.onGetChannel();
-            }}
-          >
-            CHANNEL
-          </button>
-          {props.channel.map((item) => (
-            <ListGroup.Item key={item.id}>{item.name}</ListGroup.Item>
-          ))}
-        </ListGroup>
-      </Container>
-    );
-  } else {
-    return <h2>Loading.....</h2>;
   }
+
+  return (
+    <Container>
+      <ListGroup>
+        {props.channel.map((item) => (
+          <ListGroup.Item key={item.id}>{item.name}</ListGroup.Item>
+        ))}
+      </ListGroup>
+    </Container>
+  );
 };
 
 const mapStateToProps = (state) => {
@@ -40,8 +33,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onGetChannel: () => dispatch(actionCreator.getChannel()),
+    onGetChannel: () => dispatch(getChannel()),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(channels);
+export default connect(mapStateToProps, mapDispatchToProps)(Channels);

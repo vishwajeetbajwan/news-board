@@ -9,6 +9,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   console.log('IN reducer', action.payload);
+  console.log('action.type', action.type);
   switch (action.type) {
     case GET_CHANNELS:
       return {
