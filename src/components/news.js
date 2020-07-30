@@ -1,8 +1,10 @@
 import React from 'react';
 import { Container, ListGroup, Alert, Row, Col, Badge } from 'react-bootstrap';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
+import { getContent } from '../actions/action';
 
 const News = (props) => {
+  const dispatch = useDispatch();
   if (props.loading) {
     return (
       <Container>
@@ -45,7 +47,14 @@ const News = (props) => {
       </Row>
       <ListGroup>
         {props.news.map((item) => (
-          <ListGroup.Item action variant={'info'} key={Math.random()}>
+          <ListGroup.Item
+            action
+            variant={'info'}
+            key={Math.random()}
+            onClick={() => {
+              dispatch(getContent(item));
+            }}
+          >
             {item.title}
           </ListGroup.Item>
         ))}
@@ -57,6 +66,7 @@ const News = (props) => {
 const mapStateToProps = (state) => {
   return {
     news: state.news,
+    content: state.content,
     loading: state.loading,
   };
 };

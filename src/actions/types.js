@@ -1,2 +1,0 @@
-export const GET_CHANNELS = 'GET_CHANNELS';
-export const CHANNEL_ERROR = 'CHANNEL_ERROR';

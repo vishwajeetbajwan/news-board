@@ -1,40 +1,14 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import { Container, Row, Col, ListGroup } from 'react-bootstrap';
-import Channels from './components/channels';
-import PageNo from './components/PageNo';
-import News from './components/news';
 import { Provider } from 'react-redux';
 import store from './store';
+import Index from './components/index';
 
 const App = () => {
   return (
     <Provider store={store}>
-      <Container>
-        <Row>
-          <h1 class="warning">NEWS BOARD</h1>
-        </Row>
-        <Row>
-          <Col sm={4}>
-            <Channels />
-            {/*<PageNo />*/}
-          </Col>
-          <Col sm={4}>
-            <News />
-          </Col>
-          <Col sm={4}>
-            <h2>Content</h2>
-            <ListGroup>
-              <ListGroup.Item>Cras justo odio</ListGroup.Item>
-              <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-              <ListGroup.Item>Morbi leo risus</ListGroup.Item>
-              <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
-              <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-            </ListGroup>
-          </Col>
-        </Row>
-      </Container>
+      <Index />
     </Provider>
   );
 };

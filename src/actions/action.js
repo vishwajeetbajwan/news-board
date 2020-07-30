@@ -6,6 +6,7 @@ import axios from 'axios';
 export const GET_CHANNELS = 'GET_CHANNELS';
 export const CHANNEL_ERROR = 'CHANNEL_ERROR';
 export const GET_NEWS = 'GET_NEWS';
+export const GET_CONTENT = 'GET_CONTENT';
 
 export const getChannel = () => {
   return async (dispatch) => {
@@ -43,5 +44,16 @@ export const getNews = (url) => {
           loading: false,
         });
       });
+  };
+};
+
+export const getContent = (item) => {
+  return (dispatch) => {
+    console.log('IN action getcontent dispatch');
+    dispatch({
+      type: GET_CONTENT,
+      content: item,
+      loading: false,
+    });
   };
 };
