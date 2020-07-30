@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { Container, Row, Col, ListGroup } from 'react-bootstrap';
 import Channels from './components/channels';
 import PageNo from './components/PageNo';
+import News from './components/news';
 import { Provider } from 'react-redux';
 import store from './store';
 
@@ -12,34 +13,15 @@ const App = () => {
     <Provider store={store}>
       <Container>
         <Row>
-          <h1 className="App-h1">NEWS BOARD</h1>
+          <h1 class="warning">NEWS BOARD</h1>
         </Row>
         <Row>
           <Col sm={4}>
-            <h2>Channels</h2>
             <Channels />
-            {/*
-            <button onClick={() => dispatch({ type: 'GET_CHANNELS' })}>
-              CHANNEL
-            </button>
-            <h4>state: {channel}</h4>*/}
-            {/*
-            <PageNo
-              activePage={activePage}
-              channelsPerPage={channelsPerPage}
-              totalChannel={channel.length}
-              handlePageChange={handlePageChange}
-            />*/}
+            {/*<PageNo />*/}
           </Col>
           <Col sm={4}>
-            <h2>News</h2>
-            <ListGroup>
-              <ListGroup.Item>Cras justo odio</ListGroup.Item>
-              <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-              <ListGroup.Item>Morbi leo risus</ListGroup.Item>
-              <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
-              <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-            </ListGroup>
+            <News />
           </Col>
           <Col sm={4}>
             <h2>Content</h2>

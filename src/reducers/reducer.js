@@ -1,14 +1,14 @@
-import { GET_CHANNELS, CHANNEL_ERROR } from '../actions/action';
+import { GET_CHANNELS, GET_NEWS } from '../actions/action';
 
 console.log('.....in reducer');
 
 const initialState = {
   channel: [],
+  news: [],
   loading: true,
 };
 
 const reducer = (state = initialState, action) => {
-  console.log('IN reducer', action.payload);
   console.log('action.type', action.type);
   switch (action.type) {
     case GET_CHANNELS:
@@ -18,11 +18,11 @@ const reducer = (state = initialState, action) => {
         loading: false,
       };
 
-    case CHANNEL_ERROR:
+    case GET_NEWS:
       return {
         ...state,
-        error: action.error,
-        loading: true,
+        news: action.news,
+        loading: false,
       };
 
     default:
