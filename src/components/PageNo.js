@@ -8,7 +8,7 @@ import { handlePageChange } from '../actions/action';
 const PageNo = (props) => {
   const dispatch = useDispatch();
   const totalChannel = props.channel.length;
-  const channelsPerPage = 20;
+  const channelsPerPage = 21;
   useEffect(() => {
     dispatch(
       getCurrentChannel(props.channel, props.activePage, channelsPerPage)
@@ -20,7 +20,7 @@ const PageNo = (props) => {
         itemClass="page-item"
         linkClass="page-link"
         activePage={props.activePage}
-        itemsCountPerPage={props.channelsPerPage}
+        itemsCountPerPage={channelsPerPage}
         totalItemsCount={totalChannel}
         onChange={(pgNo) => {
           dispatch(handlePageChange(pgNo));

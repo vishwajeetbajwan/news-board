@@ -6,8 +6,6 @@ import {
   GET_PAGE,
 } from '../actions/action';
 
-console.log('.....in reducer');
-
 const initialState = {
   channel: [],
   currentChannel: [],
@@ -18,7 +16,6 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  console.log('action.type', action.type);
   switch (action.type) {
     case GET_CHANNELS:
       return {
