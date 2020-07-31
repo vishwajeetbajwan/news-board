@@ -3,6 +3,7 @@ import { Container, ListGroup, Badge, Col, Row } from 'react-bootstrap';
 //import { Provider, useSelector, useDispatch } from 'react-redux';
 import { connect, useDispatch } from 'react-redux';
 import { getChannel, getNews } from '../actions/action';
+import PageNo from './PageNo';
 
 const Channels = (props) => {
   const dispatch = useDispatch();
@@ -37,7 +38,7 @@ const Channels = (props) => {
         </Col>
       </Row>
       <ListGroup>
-        {props.channel.map((item) => (
+        {props.currentChannel.map((item) => (
           <ListGroup.Item
             action
             variant={'info'}
@@ -50,6 +51,7 @@ const Channels = (props) => {
           </ListGroup.Item>
         ))}
       </ListGroup>
+      <PageNo />
     </Container>
   );
 };
@@ -57,6 +59,7 @@ const Channels = (props) => {
 const mapStateToProps = (state) => {
   return {
     channel: state.channel,
+    currentChannel: state.currentChannel,
     loading: state.loading,
     news: state.news,
   };

@@ -1,12 +1,20 @@
-import { GET_CHANNELS, GET_NEWS, GET_CONTENT } from '../actions/action';
+import {
+  GET_CHANNELS,
+  GET_NEWS,
+  GET_CONTENT,
+  GET_CURRENT,
+  GET_PAGE,
+} from '../actions/action';
 
 console.log('.....in reducer');
 
 const initialState = {
   channel: [],
+  currentChannel: [],
   news: [],
   content: [],
   loading: true,
+  activePage: 1,
 };
 
 const reducer = (state = initialState, action) => {
@@ -16,6 +24,19 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         channel: action.channel,
+        loading: false,
+      };
+
+    case GET_PAGE:
+      return {
+        ...state,
+        activePage: action.activePage,
+      };
+
+    case GET_CURRENT:
+      return {
+        ...state,
+        currentChannel: action.currentChannel,
         loading: false,
       };
 

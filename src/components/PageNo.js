@@ -1,23 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Pagination from 'react-js-pagination';
 import { Container } from 'react-bootstrap';
-import { connect } from 'react-redux';
-//require('bootstrap-less/bootstrap/bootstrap.less');
+import { connect, useDispatch } from 'react-redux';
+import { getCurrentChannel } from '../actions/action';
+import { handlePageChange } from '../actions/action';
 
 const PageNo = (props) => {
-  // const [activePage, setActivePage] = useState(1);
-  // const [channelsPerPage] = useState(11);
-
-  // const totalChannel = channel.length;
-
-  // const indexOfLastChannel = activePage * channelsPerPage;
-  // const indexOfFirstChannel = indexOfLastChannel - channelsPerPage;
-  // const currentChannel = channel.slice(indexOfFirstChannel, indexOfLastChannel);
-
-  // function handlePageChange(pageNumber) {
-  //   setActivePage(pageNumber);
-  // }
-
+  const dispatch = useDispatch();
+  const totalChannel = props.channel.length;
+  const channelsPerPage = 20;
+  useEffect(() => {
+    dispatch(
+      getCurrentChannel(props.channel, props.activePage, channelsPerPage)
+    );
+  }, [props.activePage]);
   return (
     <Container>
       <Pagination
@@ -25,25 +21,20 @@ const PageNo = (props) => {
         linkClass="page-link"
         activePage={props.activePage}
         itemsCountPerPage={props.channelsPerPage}
-        totalItemsCount={props.totalChannel}
-        onChange={props.handlePageChange()}
+        totalItemsCount={totalChannel}
+        onChange={(pgNo) => {
+          dispatch(handlePageChange(pgNo));
+        }}
       ></Pagination>
     </Container>
   );
 };
-/*
+
 const mapStateToProps = (state) => {
   return {
+    channel: state.channel,
     activePage: state.activePage,
-    itemsCountPerPage: state.channelsPerPage,
-    totalItemsCount: state.totalChannel,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    handlePageChange: () => dispatch(getPageNo()),
-  };
-};*/
-
-export default PageNo;
+export default connect(mapStateToProps)(PageNo);

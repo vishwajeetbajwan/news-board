@@ -59,12 +59,5 @@ const mapStateToProps = (state) => {
     loading: state.loading,
   };
 };
-/* 
-  const mapDispatchToProps = (dispatch) => {
-    return {
-      onGetChannel: () => dispatch(getChannel()),
-      onGetNews: () => dispatch(getNews()),
-    };
-  };*/
 
 export default connect(mapStateToProps)(Content);

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import Channels from './channels';
-import PageNo from './PageNo';
 import News from './news';
 import Content from './content';
 
@@ -12,7 +11,6 @@ const Index = () => {
       <Row>
         <Col sm={4}>
           <Channels />
-          {/*<PageNo />*/}
         </Col>
         <Col sm={4}>
           <News />
