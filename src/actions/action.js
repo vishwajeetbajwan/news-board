@@ -9,7 +9,7 @@ export const getChannel = () => {
   return async (dispatch) => {
     await axios
       .get(
-        'https://newsapi.org/v2/sources?language=en&apiKey=0aa4c7ced39846ccb8f911b6bf35bb0a'
+        'http://newsapi.org/v2/sources?language=en&apiKey=0aa4c7ced39846ccb8f911b6bf35bb0a'
       )
       .then((res) => {
         dispatch({
